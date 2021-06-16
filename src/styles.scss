@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  font: 600 11px Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.droppable {
+  border: 1px solid #dbdcdc;
+  cursor: grab;
+  padding: 8px;
+  text-align: center;
+  width: 80px;
+
+  // fixed scrollbar issue appearing on drag start
+  body > & {
+    position: fixed !important;
+    background: #9ebb38;
+    color: #fff;
+
+    ~ div {
+      display:none
+    }
+  }
+}
+
+aside {
+  display: grid;
+  grid-gap: 4px;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  padding: 4px;
+
+}
+
+section {
+  // overflow: auto;
+  background: #f7f7f7;
+  /* https://github.com/gridstack/gridstack.js/issues/662 */
+  background-image: linear-gradient(#fff 8px, transparent 8px),
+    linear-gradient(90deg, #fff 8px, transparent 8px);
+  background-size: 100px 70px, 8.33%;
+  background-position: 0px -4px, -4px 0px;
+}
+
+header {
+  cursor: move;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+header > h2 {
+  // color: #9ebb38;
+  flex-grow: 1;
+  margin: 0;
+}
+header > input[type="text"] {
+  border: 0;
+  color: grey;
+  flex-grow: 1;
+  outline:none;
+}
+header > button {
+  padding: 4px 8px;
+  margin: 4px;
+  background: #dbdcdc;
+  border: 0;
+  cursor: pointer;
+}
+
+.grid-stack-item-content {
+  display: grid;
+  grid-auto-rows: auto 1fr;
+  background: #fff;
+  border: 1px solid #dbdcdc;
+}
+.grid-stack-item:not(.ui-resizable-autohide) .grid-stack-item-content {
+  border-color: #9ed2cb;
+}
+.placeholder-content {
+  border: 2px dashed #9ebb38 !important;
+}
+
+
+/* .ui-resizable-n,
+.ui-resizable-e,
+.ui-resizable-w,
+.ui-resizable-s, */
+.ui-resizable-nw,
+.ui-resizable-ne,
+.ui-resizable-se,
+.ui-resizable-sw {
+  background: #9ed2cb !important;
+  height: 6px !important;
+  width: 6px !important;
+}
+.ui-resizable-nw,
+.ui-resizable-ne,
+.ui-resizable-se,
+.ui-resizable-sw {
+  border-radius: 10px;
+}
+.ui-resizable-se {
+  right: 1px !important;
+  bottom: 1px !important;
+}
+.ui-resizable-sw {
+  left: 1px !important;
+  bottom: 1px !important;
+}
+.ui-resizable-nw {
+  left: 1px !important;
+  top: 1px !important;
+}
+.ui-resizable-ne {
+  right: 1px !important;
+  top: 1px !important;
+}
+
+.ui-resizable-e {
+  right: 0px !important;
+}
+.ui-resizable-w {
+  left: 0px !important;
+}
+/* .ui-resizable-e,
+.ui-resizable-w {
+  top: 50% !important;
+}
+.ui-resizable-n,
+.ui-resizable-s {
+  left: 50% !important;
+} */
